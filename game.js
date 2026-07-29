@@ -1,9 +1,15 @@
 let club = "";
-let squad = [];
+let selectedPosition = "";
+let team = {};
+
+
+/* ==========================
+   PLAYER DATABASE PART 1
+   PREMIER LEAGUE
+========================== */
+
 
 const players = [
-
-/* PREMIER LEAGUE */
 
 {
 name:"Erling Haaland",
@@ -33,7 +39,7 @@ rating:90
 name:"Kevin De Bruyne",
 club:"Manchester City",
 league:"Premier League",
-position:"CAM",
+position:"CM/CAM",
 rating:88
 },
 
@@ -69,6 +75,7 @@ position:"GK",
 rating:88
 },
 
+
 {
 name:"Bukayo Saka",
 club:"Arsenal",
@@ -89,7 +96,7 @@ rating:86
 name:"Declan Rice",
 club:"Arsenal",
 league:"Premier League",
-position:"CDM/CM",
+position:"CDM",
 rating:86
 },
 
@@ -125,6 +132,7 @@ position:"GK",
 rating:83
 },
 
+
 {
 name:"Mohamed Salah",
 club:"Liverpool",
@@ -150,22 +158,6 @@ rating:89
 },
 
 {
-name:"Alexis Mac Allister",
-club:"Liverpool",
-league:"Premier League",
-position:"CM",
-rating:84
-},
-
-{
-name:"Dominik Szoboszlai",
-club:"Liverpool",
-league:"Premier League",
-position:"CM/CAM",
-rating:82
-},
-
-{
 name:"Luis Diaz",
 club:"Liverpool",
 league:"Premier League",
@@ -180,6 +172,23 @@ league:"Premier League",
 position:"ST",
 rating:82
 },
+
+{
+name:"Alexis Mac Allister",
+club:"Liverpool",
+league:"Premier League",
+position:"CM",
+rating:84
+},
+
+{
+name:"Trent Alexander-Arnold",
+club:"Liverpool",
+league:"Premier League",
+position:"RB",
+rating:85
+},
+
 
 {
 name:"Cole Palmer",
@@ -213,13 +222,6 @@ position:"ST/CAM",
 rating:82
 },
 
-{
-name:"Nicolas Jackson",
-club:"Chelsea",
-league:"Premier League",
-position:"ST",
-rating:79
-},
 
 {
 name:"Bruno Fernandes",
@@ -253,6 +255,7 @@ position:"GK",
 rating:80
 },
 
+
 {
 name:"Son Heung-min",
 club:"Tottenham",
@@ -276,6 +279,7 @@ league:"Premier League",
 position:"CB",
 rating:82
 },
+
 
 {
 name:"Alexander Isak",
@@ -301,6 +305,7 @@ position:"LW",
 rating:81
 },
 
+
 {
 name:"Ollie Watkins",
 club:"Aston Villa",
@@ -315,80 +320,511 @@ club:"Aston Villa",
 league:"Premier League",
 position:"CM",
 rating:82
+},
+
+{
+name:"Emiliano Martinez",
+club:"Aston Villa",
+league:"Premier League",
+position:"GK",
+rating:84
 }
 
-];];
+// ==========================
+// MORE PLAYERS PART 2
+// ==========================
 
 
-window.onload=function(){
+,
 
-let list=document.getElementById("playerList");
+{
+name:"Lucas Paqueta",
+club:"West Ham",
+league:"Premier League",
+position:"CAM",
+rating:81
+},
 
-players.forEach(player=>{
+{
+name:"Jarrod Bowen",
+club:"West Ham",
+league:"Premier League",
+position:"RW",
+rating:81
+},
 
-let option=document.createElement("option");
+{
+name:"Mohammed Kudus",
+club:"West Ham",
+league:"Premier League",
+position:"LW/CAM",
+rating:82
+},
 
-option.text=
-player.name+
-" ("+
-player.position+
-") - "+
-player.rating;
 
-list.add(option);
+{
+name:"Kaoru Mitoma",
+club:"Brighton",
+league:"Premier League",
+position:"LW",
+rating:80
+},
 
-});
+{
+name:"Joao Pedro",
+club:"Brighton",
+league:"Premier League",
+position:"ST",
+rating:79
+},
 
-};
 
+{
+name:"Eberechi Eze",
+club:"Crystal Palace",
+league:"Premier League",
+position:"CAM",
+rating:81
+},
+
+{
+name:"Marc Guehi",
+club:"Crystal Palace",
+league:"Premier League",
+position:"CB",
+rating:80
+},
+
+
+{
+name:"Matheus Cunha",
+club:"Wolves",
+league:"Premier League",
+position:"ST/CAM",
+rating:79
+},
+
+
+// ==========================
+// LA LIGA
+// ==========================
+
+
+{
+name:"Jude Bellingham",
+club:"Real Madrid",
+league:"La Liga",
+position:"CM/CAM",
+rating:90
+},
+
+{
+name:"Vinicius Junior",
+club:"Real Madrid",
+league:"La Liga",
+position:"LW",
+rating:90
+},
+
+{
+name:"Federico Valverde",
+club:"Real Madrid",
+league:"La Liga",
+position:"CM",
+rating:87
+},
+
+{
+name:"Antonio Rudiger",
+club:"Real Madrid",
+league:"La Liga",
+position:"CB",
+rating:86
+},
+
+{
+name:"Thibaut Courtois",
+club:"Real Madrid",
+league:"La Liga",
+position:"GK",
+rating:89
+},
+
+{
+name:"Rodrygo",
+club:"Real Madrid",
+league:"La Liga",
+position:"RW",
+rating:85
+},
+
+
+{
+name:"Robert Lewandowski",
+club:"Barcelona",
+league:"La Liga",
+position:"ST",
+rating:88
+},
+
+{
+name:"Lamine Yamal",
+club:"Barcelona",
+league:"La Liga",
+position:"RW",
+rating:86
+},
+
+{
+name:"Pedri",
+club:"Barcelona",
+league:"La Liga",
+position:"CM",
+rating:86
+},
+
+{
+name:"Gavi",
+club:"Barcelona",
+league:"La Liga",
+position:"CM",
+rating:81
+},
+
+{
+name:"Raphinha",
+club:"Barcelona",
+league:"La Liga",
+position:"RW/LW",
+rating:84
+},
+
+{
+name:"Marc-Andre ter Stegen",
+club:"Barcelona",
+league:"La Liga",
+position:"GK",
+rating:86
+},
+
+
+{
+name:"Antoine Griezmann",
+club:"Atletico Madrid",
+league:"La Liga",
+position:"ST/CAM",
+rating:85
+},
+
+{
+name:"Julian Alvarez",
+club:"Atletico Madrid",
+league:"La Liga",
+position:"ST",
+rating:84
+},
+
+{
+name:"Jan Oblak",
+club:"Atletico Madrid",
+league:"La Liga",
+position:"GK",
+rating:88
+},
+
+
+// ==========================
+// BUNDESLIGA
+// ==========================
+
+
+{
+name:"Harry Kane",
+club:"Bayern Munich",
+league:"Bundesliga",
+position:"ST",
+rating:90
+},
+
+{
+name:"Jamal Musiala",
+club:"Bayern Munich",
+league:"Bundesliga",
+position:"CAM",
+rating:86
+},
+
+{
+name:"Joshua Kimmich",
+club:"Bayern Munich",
+league:"Bundesliga",
+position:"CM/CDM",
+rating:86
+},
+
+{
+name:"Alphonso Davies",
+club:"Bayern Munich",
+league:"Bundesliga",
+position:"LB",
+rating:84
+},
+
+{
+name:"Manuel Neuer",
+club:"Bayern Munich",
+league:"Bundesliga",
+position:"GK",
+rating:85
+},
+
+
+{
+name:"Florian Wirtz",
+club:"Bayer Leverkusen",
+league:"Bundesliga",
+position:"CAM",
+rating:87
+},
+
+{
+name:"Victor Boniface",
+club:"Bayer Leverkusen",
+league:"Bundesliga",
+position:"ST",
+rating:82
+},
+
+{
+name:"Jeremie Frimpong",
+club:"Bayer Leverkusen",
+league:"Bundesliga",
+position:"RB",
+rating:83
+},
+
+
+{
+name:"Serhou Guirassy",
+club:"Borussia Dortmund",
+league:"Bundesliga",
+position:"ST",
+rating:83
+},
+
+{
+name:"Karim Adeyemi",
+club:"Borussia Dortmund",
+league:"Bundesliga",
+position:"LW",
+rating:79
+},
+
+
+// ==========================
+// SERIE A
+// ==========================
+
+
+{
+name:"Lautaro Martinez",
+club:"Inter Milan",
+league:"Serie A",
+position:"ST",
+rating:88
+},
+
+{
+name:"Nicolo Barella",
+club:"Inter Milan",
+league:"Serie A",
+position:"CM",
+rating:86
+},
+
+{
+name:"Alessandro Bastoni",
+club:"Inter Milan",
+league:"Serie A",
+position:"CB",
+rating:85
+},
+
+
+{
+name:"Rafael Leao",
+club:"AC Milan",
+league:"Serie A",
+position:"LW",
+rating:85
+},
+
+{
+name:"Theo Hernandez",
+club:"AC Milan",
+league:"Serie A",
+position:"LB",
+rating:85
+},
+
+
+{
+name:"Dusan Vlahovic",
+club:"Juventus",
+league:"Serie A",
+position:"ST",
+rating:82
+},
+
+{
+name:"Federico Chiesa",
+club:"Juventus",
+league:"Serie A",
+position:"LW/RW",
+rating:82
+},
+
+
+{
+name:"Victor Osimhen",
+club:"Napoli",
+league:"Serie A",
+position:"ST",
+rating:87
+},
+
+
+// ==========================
+// LIGUE 1
+// ==========================
+
+
+{
+name:"Ousmane Dembele",
+club:"PSG",
+league:"Ligue 1",
+position:"RW",
+rating:86
+},
+
+{
+name:"Achraf Hakimi",
+club:"PSG",
+league:"Ligue 1",
+position:"RB",
+rating:87
+},
+
+{
+name:"Marquinhos",
+club:"PSG",
+league:"Ligue 1",
+position:"CB",
+rating:85
+},
+
+{
+name:"Warren Zaire-Emery",
+club:"PSG",
+league:"Ligue 1",
+position:"CM",
+rating:80
+},
+
+{
+name:"Bradley Barcola",
+club:"PSG",
+league:"Ligue 1",
+position:"LW",
+rating:82
+},
+
+
+{
+name:"Breel Embolo",
+club:"Monaco",
+league:"Ligue 1",
+position:"ST",
+rating:78
+},
+
+
+];
+
+
+
+/* ==========================
+   GAME FUNCTIONS
+========================== */
 
 
 function startGame(){
 
 club=document.getElementById("clubName").value;
 
+
 if(club===""){
 alert("Enter club name");
 return;
 }
 
-document.getElementById("teamBox").style.display="block";
 
-alert(club+" created!");
+document.getElementById("pitchContainer").style.display="block";
+
+
+document.getElementById("clubTitle").innerHTML =
+club + " Starting XI";
 
 }
 
 
 
-function addPlayer(){
+function selectPosition(position){
 
-let selected=document.getElementById("playerList").value;
+selectedPosition=position;
 
-let player=players.find(
-p=>selected.includes(p.name)
+
+let available = players.filter(
+player => !Object.values(team).includes(player)
 );
 
 
-if(squad.includes(player)){
-alert("Already selected!");
-return;
-}
+let message =
+"Choose player for "+position+"\n\n";
 
 
-squad.push(player);
+available.forEach((player,index)=>{
 
-
-let li=document.createElement("li");
-
-li.innerHTML=
+message +=
+(index+1)+". "+
 player.name+
-" | "+
+" ("+
 player.position+
-" | Rating "+
-player.rating;
+") "+
+player.rating+
+"\n";
+
+});
 
 
-document.getElementById("squad").appendChild(li);
+let choice = prompt(message);
+
+
+let chosen = available[Number(choice)-1];
+
+
+if(chosen){
+
+team[position]=chosen;
+
+
+document.getElementById(position).innerHTML =
+chosen.name+
+"<br>"+
+chosen.rating;
+
+
+}
 
 }
 
@@ -396,30 +832,28 @@ document.getElementById("squad").appendChild(li);
 
 function simulateMatch(){
 
-let strength=0;
+let rating=0;
 
-squad.forEach(player=>{
-strength+=player.rating;
+
+Object.values(team).forEach(player=>{
+
+rating += player.rating;
+
 });
 
 
-let yourGoals=Math.floor(
-Math.random()*5
-);
+let goals=Math.floor(Math.random()*5);
+
+let opponent=Math.floor(Math.random()*5);
 
 
-let opponentGoals=Math.floor(
-Math.random()*5
-);
-
-
-document.getElementById("result").innerHTML=
+document.getElementById("result").innerHTML =
 
 club+
 " "+
-yourGoals+
+goals+
 " - "+
-opponentGoals+
+opponent+
 " AI United";
 
 
