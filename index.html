@@ -1,61 +1,141 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Dream XI Manager</title>
-    <link rel="stylesheet" href="style.css">
+<title>Dream XI Manager</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
 <h1>⚽ Dream XI Manager</h1>
 
 <div class="box">
-    <h2>Create Your Club</h2>
 
-    <input id="clubName" placeholder="Club Name">
+<h2>Create Club</h2>
 
-    <select id="formation">
-        <option>4-3-3</option>
-        <option>4-2-3-1</option>
-        <option>3-5-2</option>
-        <option>4-4-2</option>
-    </select>
+<input id="clubName" placeholder="Club Name">
 
-    <button onclick="startGame()">Create Club</button>
+<select id="formation" onchange="changeFormation()">
+
+<option value="433">4-3-3</option>
+<option value="4231">4-2-3-1</option>
+<option value="352">3-5-2</option>
+<option value="442">4-4-2</option>
+
+</select>
+
+
+<button onclick="startGame()">
+Create Club
+</button>
+
+</div>
+
+
+
+<div id="pitchContainer" style="display:none">
+
+
+<h2 id="clubTitle"></h2>
+
+
+<div class="pitch">
+
+
+<div class="position st" onclick="selectPosition('ST')">
+ST<br>
+<span id="ST">+</span>
 </div>
 
 
-<div class="box" id="teamBox" style="display:none">
+<div class="position lw" onclick="selectPosition('LW')">
+LW<br>
+<span id="LW">+</span>
+</div>
 
-<h2>Your Dream XI</h2>
 
-<p>Select your players:</p>
+<div class="position rw" onclick="selectPosition('RW')">
+RW<br>
+<span id="RW">+</span>
+</div>
 
-<select id="playerList"></select>
 
-<button onclick="addPlayer()">Add Player</button>
+<div class="position cm1" onclick="selectPosition('CM1')">
+CM<br>
+<span id="CM1">+</span>
+</div>
 
-<h3>Your Squad</h3>
 
-<ul id="squad"></ul>
+<div class="position cm2" onclick="selectPosition('CM2')">
+CM<br>
+<span id="CM2">+</span>
+</div>
 
-<button onclick="simulateMatch()">Play Match</button>
+
+<div class="position cdm" onclick="selectPosition('CDM')">
+CDM<br>
+<span id="CDM">+</span>
+</div>
+
+
+<div class="position lb" onclick="selectPosition('LB')">
+LB<br>
+<span id="LB">+</span>
+</div>
+
+
+<div class="position cb1" onclick="selectPosition('CB1')">
+CB<br>
+<span id="CB1">+</span>
+</div>
+
+
+<div class="position cb2" onclick="selectPosition('CB2')">
+CB<br>
+<span id="CB2">+</span>
+</div>
+
+
+<div class="position rb" onclick="selectPosition('RB')">
+RB<br>
+<span id="RB">+</span>
+</div>
+
+
+<div class="position gk" onclick="selectPosition('GK')">
+GK<br>
+<span id="GK">+</span>
+</div>
+
 
 </div>
+
+
+<button onclick="simulateMatch()">
+Play Match
+</button>
+
+
+</div>
+
 
 
 <div class="box">
 
-<h2>Match Result</h2>
+<h2>Result</h2>
 
 <p id="result">
-No match played yet.
+No match yet
 </p>
 
 </div>
 
 
+
 <script src="game.js"></script>
 
 </body>
+
 </html>
