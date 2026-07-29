@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dream XI Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>⚽ Dream XI Manager</h1>
+
+<div class="box">
+    <h2>Create Your Club</h2>
+
+    <input id="clubName" placeholder="Club Name">
+
+    <select id="formation">
+        <option>4-3-3</option>
+        <option>4-2-3-1</option>
+        <option>3-5-2</option>
+        <option>4-4-2</option>
+    </select>
+
+    <button onclick="startGame()">Create Club</button>
+</div>
+
+
+<div class="box" id="teamBox" style="display:none">
+
+<h2>Your Dream XI</h2>
+
+<p>Select your players:</p>
+
+<select id="playerList"></select>
+
+<button onclick="addPlayer()">Add Player</button>
+
+<h3>Your Squad</h3>
+
+<ul id="squad"></ul>
+
+<button onclick="simulateMatch()">Play Match</button>
+
+</div>
+
+
+<div class="box">
+
+<h2>Match Result</h2>
+
+<p id="result">
+No match played yet.
+</p>
+
+</div>
+
+
+<script src="game.js"></script>
+
+</body>
+</html>
